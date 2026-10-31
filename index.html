@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Journey — A Visual Diary</title>
+    <meta name="description" content="A personal journey through life's most beautiful moments">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <svg class="grain" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <filter id="grain-filter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="3" stitchTiles="stitch"/>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#grain-filter)"/>
+    </svg>
+
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <section class="hero" id="hero">
+        <div class="hero-shapes" aria-hidden="true">
+            <div class="h-shape h-shape--1"></div>
+            <div class="h-shape h-shape--2"></div>
+            <div class="h-shape h-shape--3"></div>
+            <div class="h-shape h-shape--4"></div>
+            <div class="h-shape h-shape--5"></div>
+        </div>
+
+        <div class="hero-content">
+            <span class="hero-badge">✦ Make by Dphong with luv ✦</span>
+            <h1 class="hero-title">
+                <span class="reveal-wrap"><span class="reveal-text">Memory</span></span>
+                <span class="reveal-wrap"><span class="reveal-text">Journey</span></span>
+            </h1>
+            <p class="hero-sub">Những chuyến đi này sẽ là ký ức, có khi lúc đó chúng ta quên mất những tháng ngày cùng nhau này?
+Nhưng biết đâu 50 năm sau đó trong một chiều nắng ngập vàng, những tấm hình cũ nằm trên đôi tay run rẩy, rồi bất chợt kỷ niệm sẽ ùa về, và ta nhớ lại cái lần đầu tiên bỡ ngỡ trước biển trời rộng lớn, nhớ lại cái nôn nao khi thấy tuyết ngập tràn, nhớ lại những chuyến đi, nhớ hết tất cả những con người và nhớ những nụ cười rất tươi của một thời tuổi trẻ!</p>
+        </div>
+        
+    </section>
+
+    <section class="journey" id="journey">
+        <header class="journey-header scroll-reveal">
+            <span class="section-tag">Các điểm đến</span>
+            <h2 class="section-title">The Road So Far</h2>
+        </header>
+
+        <div class="journey-wrap" id="journeyWrap">
+            <svg class="journey-svg" id="journeySvg" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="pathGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#C4956A" stop-opacity="0.12"/>
+                        <stop offset="30%" stop-color="#C4956A" stop-opacity="0.55"/>
+                        <stop offset="60%" stop-color="#B8918F" stop-opacity="0.4"/>
+                        <stop offset="100%" stop-color="#9AAF95" stop-opacity="0.18"/>
+                    </linearGradient>
+                    <filter id="pathGlow" x="-30%" y="-5%" width="160%" height="110%">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="7"/>
+                    </filter>
+                </defs>
+            </svg>
+            <div class="stops" id="stops"></div>
+        </div>
+
+        <div class="journey-add-wrap scroll-reveal">
+            <button class="add-journey-btn" id="openAddModalBtn" type="button" aria-label="Add New Journey">
+                <span class="add-journey-btn__icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="add-journey-btn__label">Add New Journey</span>
+            </button>
+        </div>
+    </section>
+
+    <section class="outro scroll-reveal" id="outro">
+        <div class="outro-content">
+            <span class="outro-ornament">✦</span>
+            <h2 class="outro-title">The journey continues…</h2>
+            <p class="outro-text">New memories are waiting to be made</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Memory Journey — Crafted with ♥</p>
+    </footer>
+
+    <div class="form-modal" id="addJourneyModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="form-dialog">
+            <div class="form-header">
+                <div>
+                    <span class="section-tag">New Milestone</span>
+                    <h3 class="form-title">Add New Journey</h3>
+                </div>
+                <button type="button" class="modal-close" id="closeAddModalBtn" aria-label="Close form">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <form id="addJourneyForm" class="journey-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="inpTitle">Destination Title</label>
+                        <input type="text" id="inpTitle" placeholder="e.g. Hội An Lanterns" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inpDate">Date</label>
+                        <input type="text" id="inpDate" placeholder="e.g. February 2025" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inpUrl">Cover Image URL</label>
+                    <input type="url" id="inpUrl" placeholder="https://images.unsplash.com/...">
+                </div>
+
+                <div class="form-group">
+                    <label for="inpFile">Or Upload Photos (Cover + Gallery)</label>
+                    <label class="file-drop" for="inpFile">
+                        <input type="file" id="inpFile" accept="image/*" multiple>
+                        <span class="file-drop__text" id="fileLabelText">Click to choose image files from your device</span>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="inpDesc">Memory Description</label>
+                    <textarea id="inpDesc" rows="3" placeholder="Write a short reflection about this moment..." required></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelAddModalBtn">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Journey</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
